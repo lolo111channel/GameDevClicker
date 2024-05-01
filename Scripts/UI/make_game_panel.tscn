@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgfc86stwm1e3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MakeGamePanel.gd" id="1_b4cb3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2i4a"]
+bg_color = Color(0.111197, 0.111197, 0.111197, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s76l"]
+bg_color = Color(0.724265, 0.584043, 5.77569e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga201"]
+bg_color = Color(5.77569e-07, 0.640878, 0.934072, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qikx"]
+bg_color = Color(4.52429e-06, 0.725484, 0.199417, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvsad"]
+
+[node name="MakeGamePanel" type="Panel" node_paths=PackedStringArray("game_name_label", "design_progress_bar", "programming_progress_bar", "art_progress_bar", "grid_container")]
+custom_minimum_size = Vector2(0, 150)
+script = ExtResource("1_b4cb3")
+game_name_label = NodePath("MarginContainer/GridContainer/GameName")
+design_progress_bar = NodePath("MarginContainer/GridContainer/Design")
+programming_progress_bar = NodePath("MarginContainer/GridContainer/Programming")
+art_progress_bar = NodePath("MarginContainer/GridContainer/Art")
+grid_container = NodePath("MarginContainer/GridContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GameName" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game name"
+horizontal_alignment = 1
+
+[node name="Design" type="ProgressBar" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_y2i4a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6s76l")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="Programming" type="ProgressBar" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_y2i4a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ga201")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="Art" type="ProgressBar" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_y2i4a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2qikx")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="ClickablePanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvsad")
+
+[connection signal="gui_input" from="ClickablePanel" to="." method="_on_clickable_panel_gui_input"]
+[connection signal="mouse_entered" from="ClickablePanel" to="." method="_on_clickable_panel_mouse_entered"]
+[connection signal="mouse_exited" from="ClickablePanel" to="." method="_on_clickable_panel_mouse_exited"]

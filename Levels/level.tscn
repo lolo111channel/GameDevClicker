@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwg5virelbpk3"]
+
+[ext_resource type="PackedScene" uid="uid://bgx872hy6p2j3" path="res://Scripts/Player/player.tscn" id="1_262ob"]
+[ext_resource type="PackedScene" uid="uid://6jfegpnu1t1s" path="res://Scripts/UI/ui.tscn" id="1_lyta2"]
+
+[node name="Level" type="Node2D"]
+
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_lyta2")]
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("1_262ob")]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://6jfegpnu1t1s"]
+
+[ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
+[ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
+[ext_resource type="Script" path="res://Scripts/UI/GameCreatorUI.gd" id="2_e4q7d"]
+[ext_resource type="PackedScene" uid="uid://citqmecducf4g" path="res://Scripts/UI/game_panel.tscn" id="4_d4la8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g26s"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.462745)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_jfvu4")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="GameCreator" type="Panel" parent="GridContainer" node_paths=PackedStringArray("player_ui", "grid_container")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8g26s")
+script = ExtResource("2_e4q7d")
+player_ui = NodePath("../..")
+grid_container = NodePath("ScrollContainer/VBoxContainer/GridContainer/GamePanels")
+game_panel_scene = ExtResource("4_d4la8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GridContainer/GameCreator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 6583.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer/GameCreator/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 11
+
+[node name="MoneyLabel" type="Label" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "100$"
+horizontal_alignment = 1
+
+[node name="CreatedGames" type="Label" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "0 Games"
+horizontal_alignment = 1
+
+[node name="MakeGameMargin" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MakeGamePanel" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/MakeGameMargin" node_paths=PackedStringArray("player_ui") instance=ExtResource("1_4cfp4")]
+layout_mode = 2
+player_ui = NodePath("../../../../../../..")
+
+[node name="MarginContainer2" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="GamePanels" type="GridContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 3
