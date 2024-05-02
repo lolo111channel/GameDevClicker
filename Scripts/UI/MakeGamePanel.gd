@@ -16,6 +16,12 @@ func _ready() -> void:
 		player = player_ui.get_player()
 
 func _process(delta) -> void:
+	
+	pivot_offset = Vector2(size.x/2,size.y/2)
+	
+	if grid_container:
+		grid_container.pivot_offset = Vector2(grid_container.size.x/2,grid_container.size.y/2)
+	
 	if player != null:
 		if is_instance_valid(player.making_current_game):
 			var stats : Dictionary = player.making_current_game.get_stats()
@@ -42,5 +48,10 @@ func _on_clickable_panel_gui_input(event):
 		if event.pressed:
 			if player != null:
 				if is_instance_valid(player.making_current_game):
+					
+					var tween : Tween = create_tween()
+					tween.tween_property(self,"scale",Vector2(0.8,0.8),0.15)
+					tween.tween_property(self,"scale",Vector2(1,1),0.15)
+					
 					player.making_game()
 	

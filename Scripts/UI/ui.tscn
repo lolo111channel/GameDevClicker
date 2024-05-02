@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 4
 
-[node name="GameCreator" type="Panel" parent="GridContainer" node_paths=PackedStringArray("player_ui", "grid_container")]
+[node name="GameCreator" type="Panel" parent="GridContainer" node_paths=PackedStringArray("player_ui", "grid_container", "money_label", "created_games_label")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -28,6 +28,8 @@ script = ExtResource("2_e4q7d")
 player_ui = NodePath("../..")
 grid_container = NodePath("ScrollContainer/VBoxContainer/GridContainer/GamePanels")
 game_panel_scene = ExtResource("4_d4la8")
+money_label = NodePath("ScrollContainer/VBoxContainer/GridContainer/MoneyLabel")
+created_games_label = NodePath("ScrollContainer/VBoxContainer/GridContainer/CreatedGames")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GridContainer/GameCreator"]
 layout_mode = 1
