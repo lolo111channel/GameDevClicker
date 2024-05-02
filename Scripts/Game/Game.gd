@@ -22,12 +22,15 @@ func add_points(points : Dictionary) -> void:
 	if current_points != required_points:
 		if current_points.design < required_points.design:
 			current_points.design += points.design
+			current_points.design = clamp(current_points.design,0,required_points.design)
 		
 		if current_points.art < required_points.art:
 			current_points.art += points.art
+			current_points.art = clamp(current_points.art,0,required_points.art)
 			
 		if current_points.programming < required_points.programming:
 			current_points.programming += points.programming
+			current_points.programming = clamp(current_points.programming,0,required_points.programming)
 
 func is_finished_game() -> bool:
 	if current_points == required_points:

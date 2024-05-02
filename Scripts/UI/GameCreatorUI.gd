@@ -6,8 +6,10 @@ extends Panel
 
 @export var money_label : Label
 @export var created_games_label : Label
+@export var date_in_game_label : Label
 
 var player : Player
+var game_time : GameTime
 
 var created_games_amount : int = 0
 var current_money : int = 0
@@ -15,9 +17,16 @@ var current_money : int = 0
 func _ready() -> void:
 	if player_ui:
 		player = player_ui.get_player()
-
+		game_time = player_ui.get_game_time()
 
 func _process(delta) -> void:
+	
+	if game_time != null:
+		var current_date_in_game : DateTime = game_time.get_current_date_in_game()
+		if current_date_in_game != null:
+			date_in_game_label.text = current_date_in_game.strftime("%d %B %Y")
+		
+		pass
 	
 	if player != null:
 		
