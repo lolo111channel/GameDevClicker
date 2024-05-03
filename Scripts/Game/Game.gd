@@ -1,7 +1,7 @@
 class_name Game extends Node2D
 
 var game_name : String = "Game" 
-var min_earnings : int = 5
+var min_earnings : int = 50
 var max_earnings : int = 100
 
 var required_points : Dictionary = {

@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3uv5uxa34dos"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HireWorkerUI/HireWorkerPanel.gd" id="1_pnh8s"]
+[ext_resource type="Texture2D" uid="uid://cgntcoqadhpx0" path="res://icon.svg" id="2_0pvit"]
+[ext_resource type="PackedScene" uid="uid://c5js8inpclni5" path="res://Scripts/UI/ClickablePanel/clickable_panel.tscn" id="3_f4erw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vngt"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xeqb"]
+
+[node name="HireWorkerPanel" type="PanelContainer" node_paths=PackedStringArray("name_label", "cost_label", "workers_count_label", "cover")]
+custom_minimum_size = Vector2(0, 150)
+size_flags_horizontal = 3
+script = ExtResource("1_pnh8s")
+name_label = NodePath("MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer/Name")
+cost_label = NodePath("MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer/Cost")
+workers_count_label = NodePath("MarginContainer/GridContainer/WorkersCount")
+cover = NodePath("Cover")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer/Icon"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_0pvit")
+expand_mode = 1
+
+[node name="InfoAboutNameAndCost" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/GridContainer/InfoAboutNameAndCost"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer"]
+layout_mode = 2
+text = "Programmer"
+
+[node name="Cost" type="Label" parent="MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer"]
+layout_mode = 2
+text = "100$"
+horizontal_alignment = 1
+
+[node name="WorkersCount" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "50"
+
+[node name="Cover" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2vngt")
+
+[node name="ClickablePanel" parent="." instance=ExtResource("3_f4erw")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7xeqb")
+
+[connection signal="pressed" from="ClickablePanel" to="." method="_on_clickable_panel_pressed"]

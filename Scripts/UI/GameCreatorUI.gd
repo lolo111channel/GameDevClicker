@@ -44,7 +44,7 @@ func _process(delta) -> void:
 			for i in grid_container.get_children():
 				i.queue_free()
 				
-			if created_games_amount != 5:
+			if created_games_amount < 5:
 				
 				for i in created_games_amount:
 					var game_panel : GamePanel = game_panel_scene.instantiate()

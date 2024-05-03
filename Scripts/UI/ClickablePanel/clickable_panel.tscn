@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5js8inpclni5"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ClickablePanel/ClickablePanel.gd" id="1_uljye"]
+
+[node name="ClickablePanel" type="Panel"]
+mouse_filter = 1
+script = ExtResource("1_uljye")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

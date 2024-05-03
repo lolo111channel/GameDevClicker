@@ -26,11 +26,14 @@ func _process(delta) -> void:
 		created_games.append(made_game)
 		
 
-func add_money(value) -> void:
+func add_money(value : int) -> void:
 	money += value
 
+func decrease_money(value : int) -> void:
+	money -= value
+
 func making_game(points) -> void:
-	if making_current_game:
+	if is_instance_valid(making_current_game):
 		if !making_current_game.is_finished_game():
 			making_current_game.add_points(points)
 			return
