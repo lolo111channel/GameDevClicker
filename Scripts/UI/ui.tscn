@@ -184,3 +184,6 @@ player_ui = NodePath("../../../../../../..")
 layout_mode = 2
 role_name = "Artist"
 player_ui = NodePath("../../../../../../..")
+
+[connection signal="item_selected" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_item_selected"]
+[connection signal="pressed" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_pressed"]

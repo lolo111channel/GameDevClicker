@@ -147,3 +147,5 @@ func get_size_of_game(id : int) -> Dictionary:
 func set_current_size_of_game(id : int) -> void:
 	current_size_of_game = get_size_of_game(id)
 	required_points = current_size_of_game.required_points
+	min_earnings = current_size_of_game.min_earnings
+	max_earnings = current_size_of_game.max_earnings
