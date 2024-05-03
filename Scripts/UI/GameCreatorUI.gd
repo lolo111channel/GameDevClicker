@@ -33,9 +33,9 @@ func _process(delta) -> void:
 		
 		
 		current_money = lerp(current_money,player.money+1,0.5)
-		money_label.text = "%s$" % [current_money]
+		money_label.text = "%s$" % [Global.rounding_value(current_money,"")]
 			
-		created_games_label.text = "%s Games" % [player.created_games.size()]
+		created_games_label.text = "%s Games" % [Global.rounding_value(player.created_games.size(),"")]
 		
 		
 		if created_games_amount != player.created_games.size():

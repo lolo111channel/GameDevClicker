@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://6jfegpnu1t1s"]
+[gd_scene load_steps=8 format=3 uid="uid://6jfegpnu1t1s"]
 
 [ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
 [ext_resource type="Script" path="res://Scripts/UI/GameCreatorUI.gd" id="2_e4q7d"]
+[ext_resource type="Script" path="res://Scripts/UI/SizeofGameButton.gd" id="4_4xcbg"]
 [ext_resource type="PackedScene" uid="uid://citqmecducf4g" path="res://Scripts/UI/game_panel.tscn" id="4_d4la8"]
 [ext_resource type="PackedScene" uid="uid://d3uv5uxa34dos" path="res://Scripts/UI/HireWorkerUI/hire_worker_panel.tscn" id="6_wkcj0"]
 
@@ -84,6 +85,27 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "0 Games"
 horizontal_alignment = 1
+
+[node name="MarginContainer5" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 11
+
+[node name="SizeOfGameContainer" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="SizeofGameButton" type="OptionButton" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer" node_paths=PackedStringArray("player_ui")]
+layout_mode = 2
+focus_mode = 0
+script = ExtResource("4_4xcbg")
+player_ui = NodePath("../../../../../../..")
+
+[node name="MarginContainer4" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 11
 
 [node name="MakeGameMargin" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
 layout_mode = 2

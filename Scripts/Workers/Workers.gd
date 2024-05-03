@@ -66,3 +66,12 @@ func day_elapsed() -> void:
 		points_to_add[i.workers_role] = i.workers_count
 	
 	player.making_game(points_to_add)
+
+func get_workers_count() -> int:
+	var counted_workers : int = 0
+	
+	for i in workers:
+		counted_workers += i.workers_count
+	
+	return counted_workers
+		
