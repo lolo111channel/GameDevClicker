@@ -31,7 +31,8 @@ window/size/window_height_override=720
 folder_colors={
 "res://Content/": "green",
 "res://Levels/": "yellow",
-"res://Scripts/": "teal"
+"res://Scripts/": "teal",
+"res://addons/": "gray"
 }
 
 [input]

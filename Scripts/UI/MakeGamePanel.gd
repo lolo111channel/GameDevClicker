@@ -43,15 +43,14 @@ func _process(delta) -> void:
 			art_tween.tween_property(art_progress_bar,"value",stats.art,_progress_bars_tween_time)
 
 
-func _on_clickable_panel_gui_input(event):
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			if player != null:
-				if is_instance_valid(player.making_current_game):
+
+
+func _on_clickable_panel_pressed():
+	if player != null:
+		if is_instance_valid(player.making_current_game):
+			var tween : Tween = create_tween()
+			tween.tween_property(self,"scale",Vector2(0.8,0.8),0.15)
+			tween.tween_property(self,"scale",Vector2(1,1),0.15)
 					
-					var tween : Tween = create_tween()
-					tween.tween_property(self,"scale",Vector2(0.8,0.8),0.15)
-					tween.tween_property(self,"scale",Vector2(1,1),0.15)
-					
-					player.making_game(player.player_points)
+			player.making_game(player.player_points)
 	

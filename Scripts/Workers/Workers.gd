@@ -75,3 +75,14 @@ func get_workers_count() -> int:
 	
 	return counted_workers
 		
+func get_workers_points() -> Dictionary:
+	var points : Dictionary = {
+		programming = 0,
+		art = 0,
+		design = 0
+	}
+	
+	for i in workers:
+		points[i.workers_role] = i.workers_count
+	
+	return points

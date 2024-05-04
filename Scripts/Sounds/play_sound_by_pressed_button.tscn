@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://63nt00vu8wr3"]
+
+[ext_resource type="Script" path="res://Scripts/Sounds/PlaySoundByPressedButton.gd" id="1_kl2l1"]
+
+[node name="PlaySoundByPressedButton" type="AudioStreamPlayer"]
+script = ExtResource("1_kl2l1")
