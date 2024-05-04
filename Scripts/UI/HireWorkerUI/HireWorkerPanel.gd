@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@export var role_name : String = "Programmer"
+@export var role_name : String = "Game Developer"
 @export var player_ui : PlayerUI
 @export var name_label : Label
 @export var cost_label : Label

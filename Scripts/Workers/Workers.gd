@@ -5,22 +5,8 @@ class_name Workers extends Node2D
 
 var workers : Array = [
 	{
-		name = "Designer",
-		workers_role = "design",
-		workers_count = 0,
-		base_price = 500,
-		current_price = 500
-	},
-	{
-		name = "Programmer",
-		workers_role = "programming",
-		workers_count = 0,
-		base_price = 500,
-		current_price = 500
-	},
-	{
-		name = "Artist",
-		workers_role = "art",
+		name = "Game Developer",
+		workers_role = "development_progress",
 		workers_count = 0,
 		base_price = 500,
 		current_price = 500
@@ -64,7 +50,7 @@ func day_elapsed() -> void:
 	var points_to_add : Dictionary = {}
 	for i in workers:
 		points_to_add[i.workers_role] = i.workers_count
-	
+
 	player.making_game(points_to_add)
 
 func get_workers_count() -> int:
@@ -77,9 +63,7 @@ func get_workers_count() -> int:
 		
 func get_workers_points() -> Dictionary:
 	var points : Dictionary = {
-		programming = 0,
-		art = 0,
-		design = 0
+		development_progress = 0
 	}
 	
 	for i in workers:

@@ -4,9 +4,7 @@ class_name MakeGamePanel extends Panel
 var player : Player
 
 @export var game_name_label : Label 
-@export var design_progress_bar : ProgressBar
-@export var programming_progress_bar : ProgressBar 
-@export var art_progress_bar : ProgressBar
+@export var development_progress_bar : ProgressBar
 @export var grid_container : GridContainer
 
 var _progress_bars_tween_time : float = 0.1
@@ -29,20 +27,9 @@ func _process(delta) -> void:
 			
 			game_name_label.text = stats.name
 			
-			var design_tween : Tween = create_tween()
-			design_progress_bar.max_value = stats.max_design
-			design_tween.tween_property(design_progress_bar,"value",stats.design,_progress_bars_tween_time)
-			
-			var programming_tween : Tween = create_tween()
-			programming_progress_bar.max_value = stats.max_programming
-			programming_tween.tween_property(programming_progress_bar,"value",stats.programming,_progress_bars_tween_time)
-			
-			
-			var art_tween : Tween = create_tween()
-			art_progress_bar.max_value = stats.max_art
-			art_tween.tween_property(art_progress_bar,"value",stats.art,_progress_bars_tween_time)
-
-
+			var development_progress_tween : Tween = create_tween()
+			development_progress_bar.max_value = stats.max_development_progress
+			development_progress_tween.tween_property(development_progress_bar,"value",stats.development_progress,_progress_bars_tween_time)
 
 
 func _on_clickable_panel_pressed():

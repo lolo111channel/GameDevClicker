@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgfc86stwm1e3"]
+[gd_scene load_steps=8 format=3 uid="uid://dgfc86stwm1e3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MakeGamePanel.gd" id="1_b4cb3"]
 [ext_resource type="PackedScene" uid="uid://c5js8inpclni5" path="res://Scripts/UI/ClickablePanel/clickable_panel.tscn" id="2_22wsv"]
@@ -11,21 +11,13 @@ bg_color = Color(0.111197, 0.111197, 0.111197, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s76l"]
 bg_color = Color(0.724265, 0.584043, 5.77569e-07, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga201"]
-bg_color = Color(5.77569e-07, 0.640878, 0.934072, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qikx"]
-bg_color = Color(4.52429e-06, 0.725484, 0.199417, 1)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8kr01"]
 
-[node name="MakeGamePanel" type="Panel" node_paths=PackedStringArray("game_name_label", "design_progress_bar", "programming_progress_bar", "art_progress_bar", "grid_container")]
+[node name="MakeGamePanel" type="Panel" node_paths=PackedStringArray("game_name_label", "development_progress_bar", "grid_container")]
 custom_minimum_size = Vector2(0, 150)
 script = ExtResource("1_b4cb3")
 game_name_label = NodePath("MarginContainer/GridContainer/GameName")
-design_progress_bar = NodePath("MarginContainer/GridContainer/Design")
-programming_progress_bar = NodePath("MarginContainer/GridContainer/Programming")
-art_progress_bar = NodePath("MarginContainer/GridContainer/Art")
+development_progress_bar = NodePath("MarginContainer/GridContainer/DevelopmentProgress")
 grid_container = NodePath("MarginContainer/GridContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -49,32 +41,12 @@ size_flags_horizontal = 3
 text = "Game name"
 horizontal_alignment = 1
 
-[node name="Design" type="ProgressBar" parent="MarginContainer/GridContainer"]
+[node name="DevelopmentProgress" type="ProgressBar" parent="MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_y2i4a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6s76l")
-max_value = 10.0
-value = 5.0
-show_percentage = false
-
-[node name="Programming" type="ProgressBar" parent="MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_y2i4a")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ga201")
-max_value = 10.0
-value = 5.0
-show_percentage = false
-
-[node name="Art" type="ProgressBar" parent="MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_y2i4a")
-theme_override_styles/fill = SubResource("StyleBoxFlat_2qikx")
 max_value = 10.0
 value = 5.0
 show_percentage = false

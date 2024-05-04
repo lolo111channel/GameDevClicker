@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6jfegpnu1t1s"]
+[gd_scene load_steps=9 format=3 uid="uid://6jfegpnu1t1s"]
 
 [ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/SizeofGameButton.gd" id="4_4xcbg"]
 [ext_resource type="PackedScene" uid="uid://citqmecducf4g" path="res://Scripts/UI/game_panel.tscn" id="4_d4la8"]
 [ext_resource type="PackedScene" uid="uid://d3uv5uxa34dos" path="res://Scripts/UI/HireWorkerUI/hire_worker_panel.tscn" id="6_wkcj0"]
+[ext_resource type="Script" path="res://Scripts/UI/VersionLabel.gd" id="7_4458b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g26s"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.462745)
@@ -164,26 +165,31 @@ theme_override_constants/margin_top = 5
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "Employees"
+text = "Upgrades"
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="GridContainer/HireWorkers/ScrollContainer/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 
-[node name="Designer" parent="GridContainer/HireWorkers/ScrollContainer/VBoxContainer/MarginContainer/GridContainer" node_paths=PackedStringArray("player_ui") instance=ExtResource("6_wkcj0")]
-layout_mode = 2
-role_name = "Designer"
-player_ui = NodePath("../../../../../../..")
-
-[node name="Programmer" parent="GridContainer/HireWorkers/ScrollContainer/VBoxContainer/MarginContainer/GridContainer" node_paths=PackedStringArray("player_ui") instance=ExtResource("6_wkcj0")]
+[node name="GameDeveloper" parent="GridContainer/HireWorkers/ScrollContainer/VBoxContainer/MarginContainer/GridContainer" node_paths=PackedStringArray("player_ui") instance=ExtResource("6_wkcj0")]
 layout_mode = 2
 player_ui = NodePath("../../../../../../..")
 
-[node name="Artist" parent="GridContainer/HireWorkers/ScrollContainer/VBoxContainer/MarginContainer/GridContainer" node_paths=PackedStringArray("player_ui") instance=ExtResource("6_wkcj0")]
-layout_mode = 2
-role_name = "Artist"
-player_ui = NodePath("../../../../../../..")
+[node name="Version" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -566.0
+offset_top = -130.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Test 1.0v"
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("7_4458b")
 
 [connection signal="item_selected" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_item_selected"]
 [connection signal="pressed" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_pressed"]

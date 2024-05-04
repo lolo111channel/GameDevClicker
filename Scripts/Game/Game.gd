@@ -8,9 +8,7 @@ var sizes_of_game : Array[Dictionary] =[
 	{
 		name = "Mini Game",
 		required_points = {
-			design = 10,
-			art = 10,
-			programming = 10
+			development_progress = 10
 		},
 		workers_needed = 0,
 		min_earnings = 50,
@@ -19,9 +17,7 @@ var sizes_of_game : Array[Dictionary] =[
 	{
 		name = "Indie Game",
 		required_points = {
-			design = 50,
-			art = 50,
-			programming = 50
+			development_progress = 50
 		},
 		workers_needed = 5,
 		min_earnings = 500,
@@ -30,9 +26,7 @@ var sizes_of_game : Array[Dictionary] =[
 	{
 		name = "Big Indie Game",
 		required_points = {
-			design = 100,
-			art = 100,
-			programming = 100
+			development_progress = 100
 		},
 		workers_needed = 20,
 		min_earnings = 1000,
@@ -41,9 +35,7 @@ var sizes_of_game : Array[Dictionary] =[
 	{
 		name = "AA",
 		required_points = {
-			design = 500,
-			art = 500,
-			programming = 500
+			development_progress = 500
 		},
 		workers_needed = 85,
 		min_earnings = 10000,
@@ -52,9 +44,7 @@ var sizes_of_game : Array[Dictionary] =[
 	{
 		name = "AAA",
 		required_points = {
-			design = 1000,
-			art = 1000,
-			programming = 1000
+			development_progress = 1000
 		},
 		workers_needed = 200,
 		min_earnings = 100000,
@@ -63,9 +53,7 @@ var sizes_of_game : Array[Dictionary] =[
 	{
 		name = "AAAA",
 		required_points = {
-			design = 10000,
-			art = 10000,
-			programming = 10000
+			development_progress = 10000
 		},
 		workers_needed = 1000,
 		min_earnings = 1000000,
@@ -78,15 +66,11 @@ var current_size_of_game : Dictionary = {
 }
 
 var required_points : Dictionary = {
-	design = 10,
-	art = 10,
-	programming = 10
+	development_progress = 10
 }
 
 var current_points : Dictionary = {
-	design = 0,
-	art = 0,
-	programming = 0
+	development_progress = 0
 }
 
 func _ready() -> void:
@@ -94,17 +78,10 @@ func _ready() -> void:
 
 func add_points(points : Dictionary) -> void:
 	if current_points != required_points:
-		if current_points.design < required_points.design:
-			current_points.design += points.design
-			current_points.design = clamp(current_points.design,0,required_points.design)
+		if current_points.development_progress < required_points.development_progress:
+			current_points.development_progress += points.development_progress
+			current_points.development_progress = clamp(current_points.development_progress,0,required_points.development_progress)
 		
-		if current_points.art < required_points.art:
-			current_points.art += points.art
-			current_points.art = clamp(current_points.art,0,required_points.art)
-			
-		if current_points.programming < required_points.programming:
-			current_points.programming += points.programming
-			current_points.programming = clamp(current_points.programming,0,required_points.programming)
 
 func is_finished_game() -> bool:
 	if current_points == required_points:
@@ -117,14 +94,9 @@ func get_stats() -> Dictionary:
 	return {
 		name = game_name,
 		
-		max_design = required_points.design,
-		design = current_points.design,
-		
-		max_programming = required_points.programming,
-		programming = current_points.programming,
-		
-		max_art = required_points.art,
-		art = current_points.art,
+		max_development_progress = required_points.development_progress,
+		development_progress = current_points.development_progress,
+
 	}
 
 func finish_game() -> Dictionary:
