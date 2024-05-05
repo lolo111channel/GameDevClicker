@@ -39,5 +39,5 @@ func _on_clickable_panel_pressed():
 			tween.tween_property(self,"scale",Vector2(0.8,0.8),0.15)
 			tween.tween_property(self,"scale",Vector2(1,1),0.15)
 					
-			player.making_game(player.player_points)
+			player.making_game(player.player_development_points)
 	

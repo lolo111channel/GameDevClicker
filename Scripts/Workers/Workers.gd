@@ -47,11 +47,11 @@ func get_workers_data(workers_name : String) -> Dictionary:
 	return {}
 
 func day_elapsed() -> void:
-	var points_to_add : Dictionary = {}
+	var development_points : int = 0
 	for i in workers:
-		points_to_add[i.workers_role] = i.workers_count
-
-	player.making_game(points_to_add)
+		development_points += i.workers_count
+		
+	player.making_game(development_points)
 
 func get_workers_count() -> int:
 	var counted_workers : int = 0
@@ -61,12 +61,9 @@ func get_workers_count() -> int:
 	
 	return counted_workers
 		
-func get_workers_points() -> Dictionary:
-	var points : Dictionary = {
-		development_progress = 0
-	}
-	
+func get_workers_points() -> int:
+	var points : int = 0
 	for i in workers:
-		points[i.workers_role] = i.workers_count
+		points += i.workers_count
 	
 	return points

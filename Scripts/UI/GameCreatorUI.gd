@@ -29,9 +29,6 @@ func _process(delta) -> void:
 		pass
 	
 	if player != null:
-		
-		
-		
 		current_money = lerp(current_money,player.money+1,0.5)
 		money_label.text = "%s$" % [Global.rounding_value(current_money,"")]
 			
@@ -43,29 +40,18 @@ func _process(delta) -> void:
 			
 			for i in grid_container.get_children():
 				i.queue_free()
-				
-			if created_games_amount < 5:
-				
-				for i in created_games_amount:
-					var game_panel : GamePanel = game_panel_scene.instantiate()
-					
-					
-					game_panel.game_name = player.created_games[-i-1].name
-					game_panel.how_much_earn_money = player.created_games[-i-1].money_earned
-				
-					grid_container.add_child(game_panel)
-		
-			else:
-				
-				for i in 5:
-					var game_panel : GamePanel = game_panel_scene.instantiate()
-					
-					
-					game_panel.game_name = player.created_games[-i-1].name
-					game_panel.how_much_earn_money = player.created_games[-i-1].money_earned
-				
-					grid_container.add_child(game_panel)
 			
+			
+			var max_iteration_count = clamp(created_games_amount,0,5) 
+			for i in max_iteration_count:
+				var game_panel : GamePanel = game_panel_scene.instantiate()
+					
+					
+				game_panel.game_name = player.created_games[-i-1].name
+				game_panel.how_much_earn_money = player.created_games[-i-1].money_earned
+				
+				grid_container.add_child(game_panel)
 		
+
 
 

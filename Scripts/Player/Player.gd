@@ -10,9 +10,7 @@ var created_games : Array[Dictionary] = [
 
 var created_games_count : int = 0
 
-var player_points = {
-	development_progress = 1
-}
+var player_development_points : int = 1
 
 var current_index_of_size_of_game : int = 0
 
@@ -49,19 +47,16 @@ func decrease_money(value : int) -> void:
 func add_created_games(value : int) -> void:
 	created_games_count += value
 
-func making_game(points) -> void:
+func making_game(points : int) -> void:
 	if is_instance_valid(making_current_game):
 		if !making_current_game.is_finished_game():
-			making_current_game.add_points(points)
+			making_current_game.add_development_progress(points)
 			return
 			
 		
-func get_game_per_second(points) -> float:
-	var points_arr : Array = [
-		points.development_progress
-	]
-	var min_points = points_arr.min()
+func get_game_per_second(current_development_progress : int) -> float:
+
 	if is_instance_valid(making_current_game_clone):
-		return (min_points as float / making_current_game_clone.required_points.development_progress as float)
+		return (current_development_progress as float / making_current_game_clone.max_development_progress as float)
 	
 	return 0.0
