@@ -44,6 +44,10 @@ func _process(delta) -> void:
 	else:
 		saved_date = current_date
 	
+	if Input.is_action_just_pressed("test"):
+		saved_date = DateTime.datetime({
+			year = 2023
+		})
 	
 func calculate_how_much_seconds_passed() -> void:
 	seconds_that_have_passed_from_last_launch = current_date.epoch - saved_date.epoch
@@ -56,7 +60,8 @@ func calculate_how_much_seconds_passed() -> void:
 	
 	if calculation_stats:
 		calculation_stats.calculation_stats(idle_seconds_that_elapsed)
-	
+
+
 func get_current_date_in_game() -> DateTime:
 	return current_date_in_game
 

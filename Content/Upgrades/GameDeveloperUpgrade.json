@@ -1,0 +1,13 @@
+{
+    "id":"game_developer",
+    "upgrade_name": "Game Developer",
+    "count": 0,
+    "base_price":500,
+    "conditions": [
+        {"id":"count_of_made_games","arguments":[1]}
+    ],
+
+    "actions": [
+        {"id":"add_worker","arguments":["game_developer",1]}
+    ]
+}

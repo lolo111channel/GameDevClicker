@@ -1,0 +1,13 @@
+{
+    "id":"add_player_development_points",
+    "upgrade_name": "Learn Game Dev",
+    "count": 0,
+    "base_price":100,
+    "conditions": [
+        
+    ],
+
+    "actions": [
+        {"id":"add_player_points","arguments":[1]}
+    ]
+}

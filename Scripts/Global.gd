@@ -28,3 +28,19 @@ func rounding_value(moneyx:float,y:String) -> String:
 		y = str(snapped(moneyx,0.001))
 		
 	return y;
+
+
+func get_files_from_dir(path : String) -> Array:
+	var files : Array = []
+	
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if !dir.current_is_dir():
+				files.append("%s%s" % [path,file_name])
+			file_name = dir.get_next()
+
+	return files
+

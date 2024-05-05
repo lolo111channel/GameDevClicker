@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bls6r2ekyubw0"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/Upgrades.gd" id="1_da6ce"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeCondition.gd" id="2_vfota"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeAction.gd" id="3_et5xy"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Conditions/CountOfMadeGamesUpgradeCondition.gd" id="3_kkcjq"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddWorkerUpgradeAction.gd" id="4_78ona"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddPlayerDevelopmentPointsActionUpgrade.gd" id="6_qo6xa"]
+
+[node name="Upgrades" type="Node2D"]
+script = ExtResource("1_da6ce")
+
+[node name="Conditions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="UpgradeCondition" type="Node2D" parent="Conditions"]
+script = ExtResource("2_vfota")
+
+[node name="CountOfMadeGames" type="Node2D" parent="Conditions"]
+script = ExtResource("3_kkcjq")
+id = "count_of_made_games"
+
+[node name="Actions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="UpgradeAction" type="Node2D" parent="Actions"]
+script = ExtResource("3_et5xy")
+
+[node name="AddWorkerUpgradeAction" type="Node2D" parent="Actions"]
+script = ExtResource("4_78ona")
+id = "add_worker"
+
+[node name="AddPlayerDevelopmentPoints" type="Node2D" parent="Actions"]
+script = ExtResource("6_qo6xa")
+id = "add_player_points"

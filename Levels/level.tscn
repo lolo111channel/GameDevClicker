@@ -1,17 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwg5virelbpk3"]
+[gd_scene load_steps=7 format=3 uid="uid://dwg5virelbpk3"]
 
 [ext_resource type="PackedScene" uid="uid://bgx872hy6p2j3" path="res://Scripts/Player/player.tscn" id="1_262ob"]
 [ext_resource type="PackedScene" uid="uid://6jfegpnu1t1s" path="res://Scripts/UI/ui.tscn" id="1_lyta2"]
 [ext_resource type="Script" path="res://Scripts/GameTime/GameTime.gd" id="2_fk7sv"]
+[ext_resource type="PackedScene" uid="uid://bls6r2ekyubw0" path="res://Scripts/Upgrades/upgrades.tscn" id="3_04w56"]
 [ext_resource type="Script" path="res://Scripts/CalculationStats.gd" id="3_224mo"]
 [ext_resource type="Script" path="res://Scripts/Workers/Workers.gd" id="4_6o320"]
 
 [node name="Level" type="Node2D"]
 
-[node name="UI" parent="." node_paths=PackedStringArray("player", "game_time", "workers") instance=ExtResource("1_lyta2")]
+[node name="UI" parent="." node_paths=PackedStringArray("player", "game_time", "workers", "upgrades") instance=ExtResource("1_lyta2")]
 player = NodePath("../Player")
 game_time = NodePath("../GameTime")
 workers = NodePath("../Workers")
+upgrades = NodePath("../Upgrades")
+
+[node name="Upgrades" parent="." node_paths=PackedStringArray("workers", "player") instance=ExtResource("3_04w56")]
+workers = NodePath("../Workers")
+player = NodePath("../Player")
 
 [node name="GameTime" type="Node2D" parent="." node_paths=PackedStringArray("calculation_stats")]
 script = ExtResource("2_fk7sv")

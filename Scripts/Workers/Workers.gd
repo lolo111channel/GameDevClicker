@@ -6,10 +6,8 @@ class_name Workers extends Node2D
 var workers : Array = [
 	{
 		name = "Game Developer",
-		workers_role = "development_progress",
+		workers_role = "game_developer",
 		workers_count = 0,
-		base_price = 500,
-		current_price = 500
 	},
 ]
 
@@ -22,22 +20,6 @@ func add_worker(role : String, count : int) -> void:
 			i.workers_count += count
 			break
 
-func buy_worker(workers_name : String) -> void:
-	for i in workers:
-		if i.name == workers_name:
-			if player.money >= i.current_price:
-				player.decrease_money(i.current_price)
-				
-				i.workers_count += 1
-				i.current_price = i.base_price + (i.base_price * i.workers_count) * ((i.workers_count * 2) as float/100)
-				
-				return
-			
-			
-func can_afford(workers_name : String) -> bool:
-	if player.money >= get_workers_data(workers_name).current_price:
-		return true
-	return false
 
 func get_workers_data(workers_name : String) -> Dictionary:
 	for i in workers:
