@@ -1,6 +1,6 @@
 class_name Player extends Node2D
 
-var money : int = 1000
+var money : int = 100000
 var making_current_game : Game
 var making_current_game_clone : Game = Game.new()
 
@@ -10,7 +10,7 @@ var created_games : Array[Dictionary] = [
 
 var created_games_count : int = 0
 
-var player_development_points : int = 1
+var player_development_points : float = 1
 
 var current_index_of_size_of_game : int = 0
 
@@ -66,5 +66,5 @@ func get_game_per_second(current_development_progress : int) -> float:
 	
 	return 0.0
 
-func add_player_development_points(value : int) -> void:
+func add_player_development_points(value : float) -> void:
 	player_development_points += value

@@ -1,0 +1,13 @@
+{
+    "id":"manager",
+    "upgrade_name": "Manager",
+    "count": 0,
+    "base_price":2000,
+    "conditions": [
+        {"id":"count_of_workers","arguments":[20]}
+    ],
+
+    "actions": [
+        {"id":"add_worker_points","arguments":[0.1]}
+    ]
+}

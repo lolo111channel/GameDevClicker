@@ -11,10 +11,12 @@ var workers : Array = [
 	},
 ]
 
+var power_points_of_manager : float = 0.1
+
 func _ready() -> void:
 	game_time.day_in_game_elapsed.connect(day_elapsed)
 
-func add_worker(role : String, count : int) -> void:
+func add_worker(role : String, count : float) -> void:
 	for i in workers:
 		if i.workers_role == role:
 			i.workers_count += count
@@ -29,10 +31,7 @@ func get_workers_data(workers_name : String) -> Dictionary:
 	return {}
 
 func day_elapsed() -> void:
-	var development_points : int = 0
-	for i in workers:
-		development_points += i.workers_count
-		
+	var development_points : float = get_workers_points()
 	player.making_game(development_points)
 
 func get_workers_count() -> int:
@@ -43,9 +42,13 @@ func get_workers_count() -> int:
 	
 	return counted_workers
 		
-func get_workers_points() -> int:
-	var points : int = 0
+func get_workers_points() -> float:
+	var points : float = 0
 	for i in workers:
 		points += i.workers_count
 	
+	points = points + points * power_points_of_manager
 	return points
+
+func add_power_points_of_manager(value : float) -> void:
+	power_points_of_manager += value

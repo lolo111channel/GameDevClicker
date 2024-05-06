@@ -53,8 +53,8 @@ var current_size_of_game : Dictionary = {
 	
 }
 
-var max_development_progress : int = 10
-var development_progress : int = 0
+var max_development_progress : float = 10
+var development_progress : float = 0
 
 
 func _ready() -> void:

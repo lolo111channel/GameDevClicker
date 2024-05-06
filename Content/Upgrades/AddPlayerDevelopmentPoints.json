@@ -8,6 +8,6 @@
     ],
 
     "actions": [
-        {"id":"add_player_points","arguments":[1]}
+        {"id":"add_player_points","arguments":[0.2]}
     ]
 }
