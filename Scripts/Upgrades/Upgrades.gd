@@ -2,6 +2,7 @@ class_name Upgrades extends Node2D
 
 @export var workers : Workers
 @export var player : Player
+@export var marketing : Marketing
 
 var upgrades_list : Array = []
 var unlocked_upgrades : Array = []

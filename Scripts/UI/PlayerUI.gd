@@ -4,6 +4,7 @@ class_name PlayerUI extends CanvasLayer
 @export var game_time : GameTime
 @export var workers : Workers
 @export var upgrades : Upgrades
+@export var marketing : Marketing
 
 func get_player() -> Player:
 	if player:
@@ -24,4 +25,9 @@ func get_workers() -> Workers:
 func get_uprades() -> Upgrades:
 	if upgrades:
 		return upgrades
+	return null
+
+func get_marketing() -> Marketing:
+	if marketing:
+		return marketing
 	return null

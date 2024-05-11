@@ -3,6 +3,7 @@ class_name Game extends Node2D
 var game_name : String = "Game" 
 var min_earnings : int = 50
 var max_earnings : int = 100
+var base_price : int = 5
 
 var sizes_of_game : Array[Dictionary] =[
 	{
@@ -10,14 +11,20 @@ var sizes_of_game : Array[Dictionary] =[
 		max_development_progress = 10,
 		workers_needed = 0,
 		min_earnings = 50,
-		max_earnings = 100
+		max_earnings = 100,
+		
+		add_min_fans = 1,
+		add_max_fans = 8,
 	},
 	{
 		name = "Indie Game",
 		max_development_progress = 50,
 		workers_needed = 5,
 		min_earnings = 500,
-		max_earnings = 1000
+		max_earnings = 1000,
+		
+		add_min_fans = 20,
+		add_max_fans = 80,
 	},
 	{
 		name = "Big Indie Game",
@@ -25,6 +32,9 @@ var sizes_of_game : Array[Dictionary] =[
 		workers_needed = 20,
 		min_earnings = 1000,
 		max_earnings = 4000,
+		
+		add_min_fans = 100,
+		add_max_fans = 120,
 	},
 	{
 		name = "AA",
@@ -32,6 +42,9 @@ var sizes_of_game : Array[Dictionary] =[
 		workers_needed = 85,
 		min_earnings = 10000,
 		max_earnings = 15000,
+		
+		add_min_fans = 200,
+		add_max_fans = 450,
 	},
 	{
 		name = "AAA",
@@ -39,6 +52,9 @@ var sizes_of_game : Array[Dictionary] =[
 		workers_needed = 200,
 		min_earnings = 100000,
 		max_earnings = 200000,
+		
+		add_min_fans = 500,
+		add_max_fans = 1500,
 	},
 	{
 		name = "AAAA",
@@ -46,6 +62,9 @@ var sizes_of_game : Array[Dictionary] =[
 		workers_needed = 1000,
 		min_earnings = 1000000,
 		max_earnings = 5000000,
+		
+		add_min_fans = 4000,
+		add_max_fans = 10000,
 	}
 ]
 
@@ -55,6 +74,10 @@ var current_size_of_game : Dictionary = {
 
 var max_development_progress : float = 10
 var development_progress : float = 0
+
+var marketing : Marketing
+
+signal finished_game(game_info : Dictionary)
 
 
 func _ready() -> void:
@@ -85,12 +108,19 @@ func finish_game() -> Dictionary:
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	rng.randomize()
 	var money_earned = rng.randi_range(min_earnings,max_earnings)
+	if marketing:
+		money_earned += marketing.get_money_that_fans_give()
 	
-	return {
+	var game_info : Dictionary = {
 		name = game_name,
 		max_development_progress = max_development_progress,
-		money_earned = money_earned
+		money_earned = money_earned,
+		base_price = base_price,
+		size_of_game = current_size_of_game
 	}
+	
+	emit_signal("finished_game",game_info)
+	return game_info
 
 
 func get_size_of_game(id : int) -> Dictionary:

@@ -1,6 +1,6 @@
 class_name Player extends Node2D
 
-var money : int = 100000
+var money : int = 0
 var making_current_game : Game
 var making_current_game_clone : Game = Game.new()
 
@@ -23,6 +23,7 @@ func _process(delta) -> void:
 	if !making_current_game:
 		making_current_game = Game.new()
 		making_current_game.game_name = "Game %s" % [created_games_count + 1]
+		making_current_game.add_to_group("CurrentGame")
 		making_current_game_clone = making_current_game
 		
 		get_parent().add_child(making_current_game)

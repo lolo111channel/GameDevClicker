@@ -1,5 +1,6 @@
 {
     "id":"manager",
+    "upgrade_type": "ordinary",
     "upgrade_name": "Manager",
     "count": 0,
     "base_price":2000,

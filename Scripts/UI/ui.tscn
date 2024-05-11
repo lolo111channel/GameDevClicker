@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6jfegpnu1t1s"]
+[gd_scene load_steps=12 format=3 uid="uid://6jfegpnu1t1s"]
 
 [ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/UI/BuyUpgradeUI/BuyUpgradesUI.gd" id="6_8x1ej"]
 [ext_resource type="PackedScene" uid="uid://d3uv5uxa34dos" path="res://Scripts/UI/BuyUpgradeUI/buy_upgrade_panel.tscn" id="6_bviiu"]
 [ext_resource type="Script" path="res://Scripts/UI/VersionLabel.gd" id="7_4458b"]
+[ext_resource type="Script" path="res://Scripts/UI/MarketingUI.gd" id="8_4d45v"]
+[ext_resource type="PackedScene" uid="uid://oeqto4onjhnd" path="res://Scripts/UI/MarketingUpgrade/marketing_upgrade.tscn" id="9_ytjte"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g26s"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.462745)
@@ -178,11 +180,14 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/margin_top = 5
 
-[node name="Marketing" type="Panel" parent="GridContainer"]
+[node name="Marketing" type="Panel" parent="GridContainer" node_paths=PackedStringArray("player_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_8g26s")
+script = ExtResource("8_4d45v")
+marketing_upgrade_scene = ExtResource("9_ytjte")
+player_ui = NodePath("../..")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GridContainer/Marketing"]
 layout_mode = 1
@@ -205,14 +210,14 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="UpgradeList" type="GridContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer"]
+[node name="MarketingUIElements" type="GridContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/UpgradeList"]
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 
-[node name="Label" type="Label" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/UpgradeList"]
+[node name="Label" type="Label" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -220,11 +225,11 @@ theme_override_font_sizes/font_size = 50
 text = "Marketing"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/UpgradeList"]
+[node name="MarginContainer2" type="MarginContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 
-[node name="FansText" type="Label" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/UpgradeList"]
+[node name="FansText" type="Label" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -232,13 +237,35 @@ theme_override_font_sizes/font_size = 35
 text = "Fans"
 horizontal_alignment = 1
 
-[node name="FansCount" type="Label" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/UpgradeList"]
+[node name="FansCount" type="Label" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "1k"
 horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="MarketingUpgradesCenterContainer" type="CenterContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
+layout_mode = 2
+
+[node name="MarketingUpgradesContainer" type="GridContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements/MarketingUpgradesCenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="MarketingUpgrade" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements/MarketingUpgradesCenterContainer/MarketingUpgradesContainer" instance=ExtResource("9_ytjte")]
+layout_mode = 2
+
+[node name="MarketingUpgrade2" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements/MarketingUpgradesCenterContainer/MarketingUpgradesContainer" instance=ExtResource("9_ytjte")]
+layout_mode = 2
+
+[node name="MarketingUpgrade3" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements/MarketingUpgradesCenterContainer/MarketingUpgradesContainer" instance=ExtResource("9_ytjte")]
+layout_mode = 2
 
 [node name="Version" type="Label" parent="."]
 anchors_preset = 3

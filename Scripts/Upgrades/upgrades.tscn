@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bls6r2ekyubw0"]
+[gd_scene load_steps=10 format=3 uid="uid://bls6r2ekyubw0"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/Upgrades.gd" id="1_da6ce"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeCondition.gd" id="2_vfota"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Upgrades/Conditions/CountOfWorkersUpgradeCondition.gd" id="4_83lrr"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddPlayerDevelopmentPointsActionUpgrade.gd" id="6_qo6xa"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddWorkerPointsActionUpgrade.gd" id="8_kad84"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddFansActionUpgrade.gd" id="9_hdt50"]
 
 [node name="Upgrades" type="Node2D"]
 script = ExtResource("1_da6ce")
@@ -43,3 +44,7 @@ id = "add_player_points"
 [node name="AddWorkerPoints" type="Node2D" parent="Actions"]
 script = ExtResource("8_kad84")
 id = "add_worker_points"
+
+[node name="AddFans" type="Node2D" parent="Actions"]
+script = ExtResource("9_hdt50")
+id = "add_fans"
