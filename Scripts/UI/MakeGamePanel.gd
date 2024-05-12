@@ -2,6 +2,7 @@ class_name MakeGamePanel extends Panel
 
 @export var player_ui : PlayerUI 
 var player : Player
+var disappearing_text_container : DisappearingTextContainer
 
 @export var game_name_label : Label 
 @export var development_progress_bar : ProgressBar
@@ -12,6 +13,7 @@ var _progress_bars_tween_time : float = 0.1
 func _ready() -> void:
 	if player_ui:
 		player = player_ui.get_player()
+		disappearing_text_container = player_ui.get_disappearing_text_container()
 
 func _process(delta) -> void:
 	
@@ -38,6 +40,15 @@ func _on_clickable_panel_pressed():
 			var tween : Tween = create_tween()
 			tween.tween_property(self,"scale",Vector2(0.8,0.8),0.15)
 			tween.tween_property(self,"scale",Vector2(1,1),0.15)
-					
+			
+			if disappearing_text_container != null:
+				var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+				rng.randomize()
+				var x : float = rng.randf_range(-25.0,25.0)
+				var y : float = rng.randf_range(-25.0,25.0)
+				
+				var text_pos : Vector2 = Vector2(get_global_mouse_position().x + x, get_global_mouse_position().y + y)
+				disappearing_text_container.spawn_text("+%s" % [player.player_development_points],text_pos)
+			
 			player.making_game(player.player_development_points)
 	

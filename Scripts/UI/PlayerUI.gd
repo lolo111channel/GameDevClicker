@@ -5,6 +5,7 @@ class_name PlayerUI extends CanvasLayer
 @export var workers : Workers
 @export var upgrades : Upgrades
 @export var marketing : Marketing
+@export var disappearing_text_container : DisappearingTextContainer
 
 func get_player() -> Player:
 	if player:
@@ -30,4 +31,9 @@ func get_uprades() -> Upgrades:
 func get_marketing() -> Marketing:
 	if marketing:
 		return marketing
+	return null
+
+func get_disappearing_text_container() -> DisappearingTextContainer:
+	if disappearing_text_container:
+		return disappearing_text_container
 	return null

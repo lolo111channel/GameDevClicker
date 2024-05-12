@@ -2,6 +2,7 @@
     "id":"game_developer",
     "upgrade_type": "ordinary",
     "upgrade_name": "Game Developer",
+    "price_rise": 0.3,
     "count": 0,
     "base_price":500,
     "conditions": [

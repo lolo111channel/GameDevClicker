@@ -2,6 +2,7 @@
     "id":"add_player_development_points",
     "upgrade_type": "ordinary",
     "upgrade_name": "Learn Game Dev",
+    "price_rise": 0.5,
     "count": 0,
     "base_price":100,
     "conditions": [

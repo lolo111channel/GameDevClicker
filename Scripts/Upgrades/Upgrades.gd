@@ -87,4 +87,6 @@ func get_upgrade(id : String) -> Dictionary:
 
 func get_price(id : String) -> int:
 	var upgrade = get_upgrade(id)
-	return upgrade.base_price + (upgrade.base_price * upgrade.count) * ((upgrade.count * 2) as float/100)
+	#upgrade.base_price + (upgrade.base_price * upgrade.count) * ((upgrade.count * 2) as float/100)
+	
+	return upgrade.base_price + (upgrade.base_price * upgrade.count) * (upgrade.price_rise as float)

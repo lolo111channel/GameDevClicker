@@ -2,6 +2,7 @@
     "id":"manager",
     "upgrade_type": "ordinary",
     "upgrade_name": "Manager",
+    "price_rise": 0.25,
     "count": 0,
     "base_price":2000,
     "conditions": [

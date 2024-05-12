@@ -2,10 +2,11 @@
     "id":"add_fans",
     "upgrade_type": "marketing",
     "upgrade_name": "Promote Your Games",
+    "price_rise": 1.0,
     "count": 0,
     "base_price":750,
     "conditions": [
-        
+        {"id":"count_of_fans","arguments":[10]}
     ],
 
     "actions": [

@@ -1,0 +1,15 @@
+{
+    "id":"marketer",
+    "upgrade_type": "ordinary",
+    "upgrade_name": "Marketer",
+    "price_rise": 0.1,
+    "count": 0,
+    "base_price":1500,
+    "conditions": [
+        {"id":"count_of_fans","arguments":[1000]}
+    ],
+
+    "actions": [
+        {"id":"add_marketing_power","arguments":[0.5]}
+    ]
+}
