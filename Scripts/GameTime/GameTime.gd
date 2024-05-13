@@ -69,4 +69,5 @@ func _on_timeout() -> void:
 	seconds_in_game_elapsed += 1
 	timer.start(1.0)
 	
+	SaveSystem.save_game()
 	emit_signal("day_in_game_elapsed")

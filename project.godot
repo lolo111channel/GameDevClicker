@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameDevClicker"
-config/version="Pre-Alpha 1.0v"
+config/version="Pre-Alpha 1.1v"
 run/main_scene="res://Levels/level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+SaveSystem="*res://Scripts/SaveSystem.gd"
 
 [display]
 
