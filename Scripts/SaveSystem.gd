@@ -17,6 +17,15 @@ func _ready() -> void:
 	load_game()
 
 
+func get_data_to_save(object_name : String) -> Array:
+	var data : Array = []
+	for i in data_to_save:
+		if i == object_name:
+			for j in data_to_save[i]:
+				data.append(j)
+	
+	return data
+
 func save_data(object_name : String,parameter_name : String,value) -> void:
 	if data.has(object_name):
 		if data[object_name].has(parameter_name):

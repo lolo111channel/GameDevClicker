@@ -19,7 +19,7 @@ func _process(delta) -> void:
 	cost_label.text = "%s$" % [upgrades.get_price(upgrade_id)]
 	upgrade_count_label.text = "%s" % [upgrades.get_upgrade_count(upgrade_id)] 
 	
-	if player != null:
+	if player != null and cover:
 		cover.visible = !player.is_afford(upgrades.get_price(upgrade_id))
 	
 func _on_clickable_panel_pressed():

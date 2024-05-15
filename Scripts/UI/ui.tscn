@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6jfegpnu1t1s"]
+[gd_scene load_steps=13 format=3 uid="uid://6jfegpnu1t1s"]
 
 [ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3uv5uxa34dos" path="res://Scripts/UI/BuyUpgradeUI/buy_upgrade_panel.tscn" id="6_bviiu"]
 [ext_resource type="Script" path="res://Scripts/UI/VersionLabel.gd" id="7_4458b"]
 [ext_resource type="Script" path="res://Scripts/UI/MarketingUI.gd" id="8_4d45v"]
+[ext_resource type="PackedScene" uid="uid://jsdanpotvxk" path="res://Scripts/UI/BuyUpgradeUI/buy_upgrade_panel_locked.tscn" id="8_ahpqy"]
 [ext_resource type="PackedScene" uid="uid://oeqto4onjhnd" path="res://Scripts/UI/MarketingUpgrade/marketing_upgrade.tscn" id="9_ytjte"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g26s"]
@@ -138,6 +139,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8g26s")
 script = ExtResource("6_8x1ej")
 player_ui = NodePath("../..")
 buy_upgrade_panel_scene = ExtResource("6_bviiu")
+buy_upgrade_panel_locked_scene = ExtResource("8_ahpqy")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GridContainer/BuyUpgrades"]
 layout_mode = 1

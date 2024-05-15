@@ -56,15 +56,12 @@ func use_upgrade(id : String) -> void:
 		if i.id == id:
 			searching_upgrade = i
 			break
-
-					
-					
 	
 	for i in searching_upgrade.actions:
 		for j in actions:
 			if (j as UpgradeAction).id == i.id:
 				(j as UpgradeAction).action(i.arguments)
-					
+
 
 func add_upgrade(id : String) -> void:
 	for i in upgrades_list:
@@ -85,8 +82,21 @@ func get_upgrade(id : String) -> Dictionary:
 			return i 
 	return {} 
 
+func get_upgrades_by_type(type:String) -> Array:
+	var upgrade_with_correct_type : Array = []
+	for i in upgrades_list:
+		if i.upgrade_type == type:
+			upgrade_with_correct_type.append(i)
+	
+	return upgrade_with_correct_type
+
+func is_upgrade_unlocked(id : String) -> bool:
+	for i in unlocked_upgrades:
+		if i.id == id:
+			return true
+	
+	return false
+
 func get_price(id : String) -> int:
 	var upgrade = get_upgrade(id)
-	#upgrade.base_price + (upgrade.base_price * upgrade.count) * ((upgrade.count * 2) as float/100)
-	
 	return upgrade.base_price + (upgrade.base_price * upgrade.count) * (upgrade.price_rise as float)

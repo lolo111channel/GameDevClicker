@@ -5,15 +5,9 @@ var parent_node : Node
 func _ready() -> void:
 	parent_node = get_parent()
 
-	for i in SaveSystem.data_to_save:
-		if i == parent_node.name:
-			for j in SaveSystem.data_to_save[i]:
-				if j in parent_node:
-					parent_node.set(j,SaveSystem.data[i][j])
+	for i in SaveSystem.get_data_to_save(parent_node.name):
+		parent_node.set(i,SaveSystem.data[parent_node.name][i])
 
 func _process(delta) -> void:
-	for i in SaveSystem.data_to_save:
-		if i == parent_node.name:
-			for j in SaveSystem.data_to_save[i]:
-				if j in parent_node:
-					SaveSystem.save_data(i,j,parent_node.get(j))
+	for i in SaveSystem.get_data_to_save(parent_node.name):
+		SaveSystem.save_data(parent_node.name,i,parent_node.get(i))

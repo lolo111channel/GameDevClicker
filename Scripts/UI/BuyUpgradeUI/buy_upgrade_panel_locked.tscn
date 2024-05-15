@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://jsdanpotvxk"]
+
+[ext_resource type="Script" path="res://Scripts/UI/BuyUpgradeUI/BuyUpgradePanel.gd" id="1_gc1kh"]
+[ext_resource type="Texture2D" uid="uid://cgntcoqadhpx0" path="res://icon.svg" id="2_jq8sx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vngt"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[node name="BuyUpgradePanel" type="PanelContainer" node_paths=PackedStringArray("name_label", "cost_label", "upgrade_count_label")]
+custom_minimum_size = Vector2(0, 150)
+size_flags_horizontal = 3
+script = ExtResource("1_gc1kh")
+name_label = NodePath("MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer/Name")
+cost_label = NodePath("MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer/Cost")
+upgrade_count_label = NodePath("MarginContainer/GridContainer/UpgradeCount")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer/Icon"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_jq8sx")
+expand_mode = 1
+
+[node name="InfoAboutNameAndCost" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/GridContainer/InfoAboutNameAndCost"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer"]
+layout_mode = 2
+text = "Programmer"
+
+[node name="Cost" type="Label" parent="MarginContainer/GridContainer/InfoAboutNameAndCost/GridContainer"]
+layout_mode = 2
+text = "100$"
+horizontal_alignment = 1
+
+[node name="UpgradeCount" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "50"
+
+[node name="Cover" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2vngt")
+
+[node name="LockedLabel" type="Label" parent="Cover"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.552941, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Locked"
+horizontal_alignment = 1
+vertical_alignment = 1
