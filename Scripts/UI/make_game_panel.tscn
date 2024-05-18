@@ -13,12 +13,9 @@ bg_color = Color(0.724265, 0.584043, 5.77569e-07, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8kr01"]
 
-[node name="MakeGamePanel" type="Panel" node_paths=PackedStringArray("game_name_label", "development_progress_bar", "grid_container")]
+[node name="MakeGamePanel" type="Panel"]
 custom_minimum_size = Vector2(0, 150)
 script = ExtResource("1_b4cb3")
-game_name_label = NodePath("MarginContainer/GridContainer/GameName")
-development_progress_bar = NodePath("MarginContainer/GridContainer/DevelopmentProgress")
-grid_container = NodePath("MarginContainer/GridContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,15 +30,18 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="GameName" type="Label" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Game name"
 horizontal_alignment = 1
 
 [node name="DevelopmentProgress" type="ProgressBar" parent="MarginContainer/GridContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 1
@@ -50,6 +50,17 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6s76l")
 max_value = 10.0
 value = 5.0
 show_percentage = false
+
+[node name="Label" type="Label" parent="MarginContainer/GridContainer/DevelopmentProgress"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10/100"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="ClickablePanel" parent="." instance=ExtResource("2_22wsv")]
 layout_mode = 1

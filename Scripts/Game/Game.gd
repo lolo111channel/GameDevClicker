@@ -82,7 +82,7 @@ signal finished_game(game_info : Dictionary)
 
 func _ready() -> void:
 	set_current_size_of_game(0)
-
+	
 func add_development_progress(value : int) -> void:
 	if development_progress < max_development_progress:
 		development_progress += value

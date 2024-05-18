@@ -27,17 +27,18 @@ func _process(delta) -> void:
 		making_current_game_clone = making_current_game
 		
 		get_parent().add_child(making_current_game)
+		
+		if is_instance_valid(making_current_game):
+			making_current_game.set_current_size_of_game(current_index_of_size_of_game)
 	
-	if is_instance_valid(making_current_game):
-		making_current_game.set_current_size_of_game(current_index_of_size_of_game)
-	
+		
 	if making_current_game.is_finished_game():
 		var made_game = making_current_game.finish_game()
 		add_money(made_game.money_earned)
 		add_created_games(1)
 		
 		created_games.append(made_game)
-		
+
 	
 func add_money(value : int) -> void:
 	money += value

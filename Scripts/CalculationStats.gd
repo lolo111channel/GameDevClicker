@@ -2,6 +2,7 @@ class_name CalculationStats extends Node2D
 
 @export var player : Player
 @export var workers : Workers
+@export var marketing : Marketing
 
 func calculation_stats(seconds) -> void:
 	var points : int = workers.get_workers_points()
@@ -17,3 +18,7 @@ func calculation_stats(seconds) -> void:
 		})
 		
 		player.add_created_games(round(how_many_games_made))
+	
+	var how_many_fans_get : int = how_many_games_made * player.making_current_game_clone.sizes_of_game[player.current_index_of_size_of_game].add_min_fans
+	if marketing:
+		marketing.add_fans(how_many_fans_get)
