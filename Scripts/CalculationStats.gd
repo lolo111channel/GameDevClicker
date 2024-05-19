@@ -4,6 +4,7 @@ class_name CalculationStats extends Node2D
 @export var workers : Workers
 @export var marketing : Marketing
 
+
 func calculation_stats(seconds) -> void:
 	var points : int = workers.get_workers_points()
 	var how_many_games_made : float = seconds * player.get_game_per_second(points)

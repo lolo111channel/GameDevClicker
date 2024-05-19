@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6jfegpnu1t1s"]
+[gd_scene load_steps=16 format=3 uid="uid://6jfegpnu1t1s"]
 
 [ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/EffectUI/EffectsInfo.gd" id="11_5kjo3"]
 [ext_resource type="Script" path="res://Scripts/UI/ReviewUI/ReviewsUI.gd" id="11_8aldi"]
 [ext_resource type="PackedScene" uid="uid://5cun7ak7m011" path="res://Scripts/UI/ReviewUI/review_ui.tscn" id="11_qq836"]
-[ext_resource type="PackedScene" uid="uid://bha5hrnpupo4x" path="res://Scripts/UI/EffectUI/effect_ui.tscn" id="12_6l22y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g26s"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.462745)
@@ -281,12 +280,14 @@ theme_override_constants/margin_bottom = 30
 [node name="EffectsInfoContainer" type="CenterContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
 layout_mode = 2
 
-[node name="EffectsInfo" type="GridContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements/EffectsInfoContainer" node_paths=PackedStringArray("player_ui")]
+[node name="EffectsInfo" type="GridContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements/EffectsInfoContainer"]
 layout_mode = 2
 columns = 5
 script = ExtResource("11_5kjo3")
-effect_ui_scene = ExtResource("12_6l22y")
-player_ui = NodePath("../../../../../../../..")
+
+[node name="Panel" type="Panel" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements/EffectsInfoContainer/EffectsInfo"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 
 [node name="ReviewsContainer" type="MarginContainer" parent="GridContainer/Marketing/ScrollContainer/VBoxContainer/MarginContainer/MarketingUIElements"]
 layout_mode = 2

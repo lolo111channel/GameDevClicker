@@ -9,10 +9,14 @@ var reviews : Array[Dictionary] = [
 var effects : Array[Dictionary] = [
 	
 ]
-
+var max_effects : int = 10
 
 var current_game : Game
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
+signal new_reviews
+signal selected_review
 
 func _ready() -> void:
 	if game_time:
@@ -45,6 +49,7 @@ func select_review(index : int) -> void:
 		
 		reviews = []
 		effects_running()
+		emit_signal("selected_review")
 
 func effects_running() -> void:
 	var effects_survived : Array[Dictionary] = []
@@ -74,22 +79,22 @@ func effects_running() -> void:
 				
 				
 	effects = effects_survived
-
+	
 
 
 func _start_make_game() -> void:
 	effects_running()
 
 func _finished_game(game_info : Dictionary) -> void:
-	if reviews.size() < 3:
+	if reviews.size() < 3 and effects.size() < max_effects:
 		for i in range(3):
 			
-			var positive_effect_change : int = randi_range(10,80)
+			var positive_effect_chance : int = randi_range(10,80)
 			reviews.append({
 				positive_effect = {
 					effect_type = "positive",
 					duration = rng.randi_range(1000,100000), #in seconds
-					chance = positive_effect_change,
+					chance = positive_effect_chance,
 					add_money = rng.randf_range(1,5.0),
 					add_fans = rng.randf_range(1,5.0) ,
 					game_production = rng.randf_range(1,5.0)
@@ -97,12 +102,14 @@ func _finished_game(game_info : Dictionary) -> void:
 				negative_effect = {
 					effect_type = "negative",
 					duration = rng.randi_range(1000,100000), #in seconds
-					chance = 100 - positive_effect_change,
+					chance = 100 - positive_effect_chance,
 					add_money = rng.randf_range(1,5.0),
 					add_fans = rng.randf_range(1,5.0) ,
 					game_production = rng.randf_range(1,5.0)
 				}
 			})
+		
+		emit_signal("new_reviews")
 
 func _day_in_game_elapsed() -> void:
 	for i in effects:

@@ -13,13 +13,14 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="UI" parent="." node_paths=PackedStringArray("player", "game_time", "workers", "upgrades", "marketing", "disappearing_text_container") instance=ExtResource("1_lyta2")]
+[node name="UI" parent="." node_paths=PackedStringArray("player", "game_time", "workers", "upgrades", "marketing", "disappearing_text_container", "reviews") instance=ExtResource("1_lyta2")]
 player = NodePath("../Player")
 game_time = NodePath("../GameTime")
 workers = NodePath("../Workers")
 upgrades = NodePath("../Upgrades")
 marketing = NodePath("../Marketing")
 disappearing_text_container = NodePath("../DisappearingTextContainer")
+reviews = NodePath("../Reviews")
 
 [node name="DisappearingTextContainer" type="CanvasLayer" parent="."]
 script = ExtResource("2_6woqu")
