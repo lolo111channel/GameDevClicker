@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfdxk01kfb74c"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Hint.gd" id="1_ptj78"]
+
+[node name="Hint" type="PanelContainer" groups=["HintUI"]]
+custom_minimum_size = Vector2(274, 114)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1646.0
+offset_bottom = -966.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ptj78")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+text = "aaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

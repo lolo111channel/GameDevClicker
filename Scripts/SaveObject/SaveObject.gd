@@ -6,7 +6,9 @@ func _ready() -> void:
 	parent_node = get_parent()
 
 	for i in SaveSystem.get_data_to_save(parent_node.name):
-		parent_node.set(i,SaveSystem.data[parent_node.name][i])
+		if SaveSystem.data.has(parent_node.name):
+			if SaveSystem.data[parent_node.name].has(i):
+				parent_node.set(i,SaveSystem.data[parent_node.name][i])
 
 func _process(delta) -> void:
 	for i in SaveSystem.get_data_to_save(parent_node.name):

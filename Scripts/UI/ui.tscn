@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6jfegpnu1t1s"]
+[gd_scene load_steps=18 format=3 uid="uid://6jfegpnu1t1s"]
 
 [ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/ReviewUI/ReviewsUI.gd" id="11_8aldi"]
 [ext_resource type="PackedScene" uid="uid://5cun7ak7m011" path="res://Scripts/UI/ReviewUI/review_ui.tscn" id="11_qq836"]
 [ext_resource type="PackedScene" uid="uid://bha5hrnpupo4x" path="res://Scripts/UI/EffectUI/effect_ui.tscn" id="12_6l22y"]
+[ext_resource type="PackedScene" uid="uid://dfdxk01kfb74c" path="res://Scripts/UI/hint.tscn" id="16_0i5no"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g26s"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.462745)
@@ -125,6 +126,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="MakeGamePanel" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/MakeGameMargin" node_paths=PackedStringArray("player_ui") instance=ExtResource("1_4cfp4")]
 layout_mode = 2
+mouse_filter = 1
 player_ui = NodePath("../../../../../../..")
 
 [node name="MarginContainer2" type="MarginContainer" parent="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer"]
@@ -316,6 +318,12 @@ text = "Test 1.0v"
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("7_4458b")
+
+[node name="Hint" parent="." instance=ExtResource("16_0i5no")]
+offset_left = 6104.0
+offset_top = 2368.0
+offset_right = 4458.0
+offset_bottom = 1402.0
 
 [connection signal="item_selected" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_item_selected"]
 [connection signal="pressed" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_pressed"]
