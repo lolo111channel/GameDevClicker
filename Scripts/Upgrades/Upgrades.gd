@@ -22,7 +22,10 @@ func _ready() -> void:
 	
 	if upgrades_list.size() > 0:
 		emit_signal("upgrade_list_loaded")
-
+	
+	if unlocked_upgrades.size() > 0:
+		emit_signal("new_upgrade_unlock")
+	
 func _process(delta) -> void:
 	for i  in upgrades_list:
 		var conditions_fulfilled : bool = true

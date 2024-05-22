@@ -5,7 +5,13 @@ var data_to_save : Dictionary = {
 		"parameter"
 	],
 	"Player" = [
-		"money"
+		"money",
+		"created_games_count",
+		"player_development_points",
+		"current_index_of_size_of_game"
+	],
+	"Upgrades" = [
+		"upgrades_list"
 	]
 }
 
@@ -48,6 +54,20 @@ func load_game() -> void:
 		return
 	
 	var file : FileAccess = FileAccess.open("user://gamedevclicker.json",FileAccess.READ)
-	var json_parse : Dictionary = JSON.parse_string(file.get_as_text())
-	data = json_parse
+	
+	var text_file_content : String = file.get_as_text()
+	if text_file_content.length() > 0:
+		var json_parse : Dictionary = JSON.parse_string(file.get_as_text())
+		data = json_parse
 
+func is_data_has_value(node_name : String, value_name : String) -> bool:
+	if data.has(node_name):
+		if data[node_name].has(value_name):
+			return true
+	return false
+
+func get_value_from_save(node_name : String, value_name : String):
+	if data.has(node_name):
+		if data[node_name].has(value_name):
+			return data[node_name][value_name]
+	

@@ -10,11 +10,7 @@ var start_date_in_game : DateTime = DateTime.datetime({
 
 var current_date_in_game : DateTime
 
-var saved_date : DateTime = DateTime.datetime({
-	year = 2022,
-	month = 4,
-	day = 1
-})
+var saved_date : DateTime
 var current_date : DateTime = DateTime.now()
 var seconds_that_have_passed_from_last_launch : int
 
@@ -32,8 +28,13 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timeout)
 	add_child(timer)
 	
-	saved_date = current_date
+	if SaveSystem.is_data_has_value(name,"date"):
+		saved_date = DateTime.datetime(SaveSystem.get_value_from_save(name,"date"))
+	else:
+		saved_date = DateTime.now()
+	
 	calculate_how_much_seconds_passed()
+	
 	
 func _process(delta) -> void:
 	current_date_in_game = start_date_in_game.add_days(seconds_in_game_elapsed)
@@ -43,6 +44,7 @@ func _process(delta) -> void:
 		calculate_how_much_seconds_passed()
 	else:
 		saved_date = current_date
+
 	
 	if Input.is_action_just_pressed("test"):
 		saved_date = DateTime.datetime({
@@ -60,7 +62,7 @@ func calculate_how_much_seconds_passed() -> void:
 	
 	if calculation_stats:
 		calculation_stats.calculation_stats(idle_seconds_that_elapsed)
-
+	
 
 func get_current_date_in_game() -> DateTime:
 	return current_date_in_game
@@ -68,6 +70,15 @@ func get_current_date_in_game() -> DateTime:
 func _on_timeout() -> void:
 	seconds_in_game_elapsed += 1
 	timer.start(1.0)
+	
+	SaveSystem.save_data(name,"date",{
+		"year":current_date.year,
+		"month":current_date.month,
+		"day":current_date.day,
+		"hour":current_date.hour,
+		"minute":current_date.minute,
+		"second":current_date.second
+	})
 	
 	SaveSystem.save_game()
 	emit_signal("day_in_game_elapsed")

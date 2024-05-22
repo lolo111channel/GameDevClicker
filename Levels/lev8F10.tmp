@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwg5virelbpk3"]
+
+[ext_resource type="PackedScene" uid="uid://bgx872hy6p2j3" path="res://Scripts/Player/player.tscn" id="1_262ob"]
+[ext_resource type="PackedScene" uid="uid://6jfegpnu1t1s" path="res://Scripts/UI/ui.tscn" id="1_lyta2"]
+[ext_resource type="Script" path="res://Scripts/DisappearingTextContainer.gd" id="2_6woqu"]
+[ext_resource type="Script" path="res://Scripts/GameTime/GameTime.gd" id="2_fk7sv"]
+[ext_resource type="PackedScene" uid="uid://bxhxsmhudpedl" path="res://Scripts/UI/disappearing_text.tscn" id="2_wasgl"]
+[ext_resource type="PackedScene" uid="uid://bls6r2ekyubw0" path="res://Scripts/Upgrades/upgrades.tscn" id="3_04w56"]
+[ext_resource type="Script" path="res://Scripts/CalculationStats.gd" id="3_224mo"]
+[ext_resource type="Script" path="res://Scripts/Workers/Workers.gd" id="4_6o320"]
+[ext_resource type="PackedScene" uid="uid://vny7b0q7sfdn" path="res://Scripts/SaveObject/save_object.tscn" id="6_6b7rj"]
+[ext_resource type="Script" path="res://Scripts/Marketing/Marketing.gd" id="6_iyf2h"]
+[ext_resource type="Script" path="res://Scripts/Reviews/Reviews.gd" id="9_i3obo"]
+
+[node name="Level" type="Node2D"]
+
+[node name="UI" parent="." node_paths=PackedStringArray("player", "game_time", "workers", "upgrades", "marketing", "disappearing_text_container", "reviews") instance=ExtResource("1_lyta2")]
+player = NodePath("../Player")
+game_time = NodePath("../GameTime")
+workers = NodePath("../Workers")
+upgrades = NodePath("../Upgrades")
+marketing = NodePath("../Marketing")
+disappearing_text_container = NodePath("../DisappearingTextContainer")
+reviews = NodePath("../Reviews")
+
+[node name="DisappearingTextContainer" type="CanvasLayer" parent="."]
+script = ExtResource("2_6woqu")
+disappearing_text_scene = ExtResource("2_wasgl")
+
+[node name="Upgrades" parent="." node_paths=PackedStringArray("workers", "player", "marketing") instance=ExtResource("3_04w56")]
+workers = NodePath("../Workers")
+player = NodePath("../Player")
+marketing = NodePath("../Marketing")
+
+[node name="GameTime" type="Node2D" parent="." node_paths=PackedStringArray("calculation_stats")]
+script = ExtResource("2_fk7sv")
+calculation_stats = NodePath("../CalculationStats")
+
+[node name="SaveObject" parent="GameTime" instance=ExtResource("6_6b7rj")]
+
+[node name="Player" parent="." instance=ExtResource("1_262ob")]
+
+[node name="Workers" type="Node2D" parent="." node_paths=PackedStringArray("player", "game_time")]
+script = ExtResource("4_6o320")
+player = NodePath("../Player")
+game_time = NodePath("../GameTime")
+
+[node name="Marketing" type="Node2D" parent="." node_paths=PackedStringArray("game_time")]
+script = ExtResource("6_iyf2h")
+game_time = NodePath("../GameTime")
+
+[node name="Reviews" type="Node2D" parent="." node_paths=PackedStringArray("game_time")]
+script = ExtResource("9_i3obo")
+game_time = NodePath("../GameTime")
+
+[node name="CalculationStats" type="Node2D" parent="." node_paths=PackedStringArray("player", "workers", "marketing")]
+script = ExtResource("3_224mo")
+player = NodePath("../Player")
+workers = NodePath("../Workers")
+marketing = NodePath("../Marketing")
