@@ -2,11 +2,11 @@ class_name Reviews extends Node2D
 
 @export var game_time : GameTime
 
-var reviews : Array[Dictionary] = [
+var reviews = [
 	
 ]
 
-var effects : Array[Dictionary] = [
+var effects = [
 	
 ]
 var max_effects : int = 10
@@ -21,6 +21,9 @@ signal selected_review
 func _ready() -> void:
 	if game_time:
 		game_time.day_in_game_elapsed.connect(_day_in_game_elapsed)
+		
+		
+	emit_signal("selected_review")
 
 func _process(delta) -> void:
 	if !is_instance_valid(current_game):

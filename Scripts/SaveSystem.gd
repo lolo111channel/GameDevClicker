@@ -10,8 +10,21 @@ var data_to_save : Dictionary = {
 		"player_development_points",
 		"current_index_of_size_of_game"
 	],
-	"Upgrades" = [
-		"upgrades_list"
+	
+	"GameTime" = [
+		"seconds_in_game_elapsed"
+	],
+	
+	"Workers" = [
+		"workers"
+	],
+	
+	"Marketing" = [
+		"fans",
+		"marketing_power"
+	],
+	"Reviews" = [
+		"effects"
 	]
 }
 
@@ -21,6 +34,10 @@ var data : Dictionary = {
 
 func _ready() -> void:
 	load_game()
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_game()
 
 
 func get_data_to_save(object_name : String) -> Array:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bls6r2ekyubw0"]
+[gd_scene load_steps=12 format=3 uid="uid://bls6r2ekyubw0"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/Upgrades.gd" id="1_da6ce"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/UpgradeCondition.gd" id="2_vfota"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddWorkerPointsActionUpgrade.gd" id="8_kad84"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddFansActionUpgrade.gd" id="9_hdt50"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/Actions/AddMarketingPowerActionUpgrade.gd" id="11_xmwdk"]
-[ext_resource type="PackedScene" uid="uid://vny7b0q7sfdn" path="res://Scripts/SaveObject/save_object.tscn" id="12_wpnrj"]
 
 [node name="Upgrades" type="Node2D"]
 script = ExtResource("1_da6ce")
@@ -59,5 +58,3 @@ id = "add_fans"
 [node name="AddMarketingPower" type="Node2D" parent="Actions"]
 script = ExtResource("11_xmwdk")
 id = "add_marketing_power"
-
-[node name="SaveObject" parent="." instance=ExtResource("12_wpnrj")]

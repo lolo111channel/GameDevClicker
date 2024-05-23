@@ -20,6 +20,16 @@ func _ready() -> void:
 		var json_parse = JSON.parse_string(file.get_as_text())
 		upgrades_list.append(json_parse)
 	
+	
+	if SaveSystem.is_data_has_value(name,"upgrades_list"):
+		var loaded_upgrades_data = SaveSystem.get_value_from_save(name,"upgrades_list")
+		for i in loaded_upgrades_data:
+			for j in upgrades_list:
+				if i.id == j.id:
+					j.count = i.count
+			
+			
+	
 	if upgrades_list.size() > 0:
 		emit_signal("upgrade_list_loaded")
 	
@@ -64,7 +74,9 @@ func use_upgrade(id : String) -> void:
 		for j in actions:
 			if (j as UpgradeAction).id == i.id:
 				(j as UpgradeAction).action(i.arguments)
-
+	
+	
+	SaveSystem.save_data(name,"upgrades_list",upgrades_list)
 
 func add_upgrade(id : String) -> void:
 	for i in upgrades_list:
