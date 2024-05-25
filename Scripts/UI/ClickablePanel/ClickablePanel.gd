@@ -34,6 +34,7 @@ func _on_mouse_exited():
 	if hint_ui:
 		hint_ui.position = Vector2(10000000,1000)
 	mouse_enter = false
+	$Timer.stop()
 
 
 func _on_timer_timeout():

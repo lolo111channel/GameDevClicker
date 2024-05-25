@@ -25,6 +25,10 @@ var data_to_save : Dictionary = {
 	],
 	"Reviews" = [
 		"effects"
+	],
+	"MainMenu" = [
+		"sound_volume",
+		"music_volume"
 	]
 }
 
@@ -87,4 +91,11 @@ func get_value_from_save(node_name : String, value_name : String):
 	if data.has(node_name):
 		if data[node_name].has(value_name):
 			return data[node_name][value_name]
-	
+
+
+func reset_save() -> void:
+	data = {}
+	save_game()
+	get_tree().reload_current_scene()
+
+

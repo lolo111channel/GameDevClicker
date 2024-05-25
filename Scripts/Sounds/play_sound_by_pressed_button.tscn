@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Scripts/Sounds/PlaySoundByPressedButton.gd" id="1_kl2l1"]
 
 [node name="PlaySoundByPressedButton" type="AudioStreamPlayer"]
+bus = &"Sounds"
 script = ExtResource("1_kl2l1")

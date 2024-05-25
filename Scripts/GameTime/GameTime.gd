@@ -60,6 +60,9 @@ func calculate_how_much_seconds_passed() -> void:
 	
 	saved_date = current_date
 	
+	print(seconds_that_have_passed_from_last_launch)
+	print(seconds_in_game_elapsed)
+	print(idle_seconds_that_elapsed)
 	if calculation_stats:
 		calculation_stats.calculation_stats(idle_seconds_that_elapsed)
 	

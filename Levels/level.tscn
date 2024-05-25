@@ -32,12 +32,6 @@ workers = NodePath("../Workers")
 player = NodePath("../Player")
 marketing = NodePath("../Marketing")
 
-[node name="GameTime" type="Node2D" parent="." node_paths=PackedStringArray("calculation_stats")]
-script = ExtResource("2_fk7sv")
-calculation_stats = NodePath("../CalculationStats")
-
-[node name="SaveObject" parent="GameTime" instance=ExtResource("6_24glm")]
-
 [node name="Player" parent="." instance=ExtResource("1_262ob")]
 
 [node name="Workers" type="Node2D" parent="." node_paths=PackedStringArray("player", "game_time")]
@@ -57,6 +51,12 @@ game_time = NodePath("../GameTime")
 script = ExtResource("9_i3obo")
 
 [node name="SaveObject" parent="Reviews" instance=ExtResource("6_24glm")]
+
+[node name="GameTime" type="Node2D" parent="." node_paths=PackedStringArray("calculation_stats")]
+script = ExtResource("2_fk7sv")
+calculation_stats = NodePath("../CalculationStats")
+
+[node name="SaveObject" parent="GameTime" instance=ExtResource("6_24glm")]
 
 [node name="CalculationStats" type="Node2D" parent="." node_paths=PackedStringArray("player", "workers", "marketing")]
 script = ExtResource("3_224mo")

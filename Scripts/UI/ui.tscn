@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6jfegpnu1t1s"]
+[gd_scene load_steps=20 format=3 uid="uid://6jfegpnu1t1s"]
 
 [ext_resource type="PackedScene" uid="uid://dgfc86stwm1e3" path="res://Scripts/UI/make_game_panel.tscn" id="1_4cfp4"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayerUI.gd" id="1_jfvu4"]
@@ -15,7 +15,9 @@
 [ext_resource type="Script" path="res://Scripts/UI/ReviewUI/ReviewsUI.gd" id="11_8aldi"]
 [ext_resource type="PackedScene" uid="uid://5cun7ak7m011" path="res://Scripts/UI/ReviewUI/review_ui.tscn" id="11_qq836"]
 [ext_resource type="PackedScene" uid="uid://bha5hrnpupo4x" path="res://Scripts/UI/EffectUI/effect_ui.tscn" id="12_6l22y"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.gd" id="15_vfr1k"]
 [ext_resource type="PackedScene" uid="uid://dfdxk01kfb74c" path="res://Scripts/UI/hint.tscn" id="16_0i5no"]
+[ext_resource type="PackedScene" uid="uid://vny7b0q7sfdn" path="res://Scripts/SaveObject/save_object.tscn" id="16_sxmxt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g26s"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.462745)
@@ -304,6 +306,160 @@ script = ExtResource("11_8aldi")
 review_ui_scene = ExtResource("11_qq836")
 player_ui = NodePath("../../../../../../../..")
 
+[node name="MainMenu" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8g26s")
+script = ExtResource("15_vfr1k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GridContainer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer/MainMenu/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="MainMenuUIElements" type="GridContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="Label" type="Label" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicCount" type="Label" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "0%"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Control" type="Control" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="SoundLabel" type="Label" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="SoundCount" type="Label" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "0%"
+horizontal_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Control2" type="Control" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="ApplySettings" type="Button" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Apply"
+
+[node name="Control3" type="Control" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "New Game"
+
+[node name="AreYouSure" type="Control" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 58.0
+grow_horizontal = 2
+
+[node name="GridContainer2" type="GridContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2"]
+layout_mode = 2
+text = "Are you sure?"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 90
+columns = 2
+
+[node name="Yes" type="Button" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "Yes"
+
+[node name="No" type="Button" parent="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "No"
+
+[node name="SaveObject" parent="GridContainer/MainMenu" instance=ExtResource("16_sxmxt")]
+
 [node name="Version" type="Label" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
@@ -327,3 +483,7 @@ offset_bottom = 1402.0
 
 [connection signal="item_selected" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_item_selected"]
 [connection signal="pressed" from="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" to="GridContainer/GameCreator/ScrollContainer/VBoxContainer/GridContainer/SizeOfGameContainer/SizeofGameButton" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/ApplySettings" to="GridContainer/MainMenu" method="_on_apply_settings_pressed"]
+[connection signal="pressed" from="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/NewGame" to="GridContainer/MainMenu" method="_on_new_game_pressed"]
+[connection signal="pressed" from="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2/CenterContainer/GridContainer/Yes" to="GridContainer/MainMenu" method="_on_yes_pressed"]
+[connection signal="pressed" from="GridContainer/MainMenu/ScrollContainer/VBoxContainer/MarginContainer/MainMenuUIElements/MarginContainer2/GridContainer/AreYouSure/CenterContainer/GridContainer2/CenterContainer/GridContainer/No" to="GridContainer/MainMenu" method="_on_no_pressed"]
