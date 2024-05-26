@@ -6,12 +6,10 @@ class_name CalculationStats extends Node2D
 
 
 func calculation_stats(seconds) -> void:
-	print("calculation_stats")
 	
 	
 	var points : int = workers.get_workers_points()
 	var how_many_games_made : float = seconds * player.get_game_per_second(points)
-	print(points)
 	
 	var how_many_earned : int = player.making_current_game_clone.min_earnings * round(how_many_games_made)
 	if how_many_earned > 0:

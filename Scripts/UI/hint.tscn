@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfdxk01kfb74c"]
+[gd_scene load_steps=3 format=3 uid="uid://dfdxk01kfb74c"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Hint.gd" id="1_ptj78"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x4u8"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Hint" type="PanelContainer" groups=["HintUI"]]
 custom_minimum_size = Vector2(202, 84)
@@ -9,11 +12,20 @@ anchor_right = 0.105208
 anchor_bottom = 0.0777778
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6x4u8")
 script = ExtResource("1_ptj78")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 10

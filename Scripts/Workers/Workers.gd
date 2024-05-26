@@ -16,7 +16,6 @@ var power_points_of_manager : float = 0.1
 func _ready() -> void:
 	if SaveSystem.is_data_has_value(name,"workers"):
 		workers = SaveSystem.get_value_from_save(name,"workers")
-		print(workers)
 		
 	game_time.day_in_game_elapsed.connect(day_elapsed)
 

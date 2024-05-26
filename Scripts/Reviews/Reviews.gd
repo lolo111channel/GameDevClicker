@@ -9,7 +9,7 @@ var reviews = [
 var effects = [
 	
 ]
-var max_effects : int = 10
+var max_effects : int = 5
 
 var current_game : Game
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -68,8 +68,8 @@ func effects_running() -> void:
 				current_game.current_size_of_game.add_min_fans = current_game.current_size_of_game.add_min_fans * i.add_fans 
 				current_game.current_size_of_game.add_max_fans = current_game.current_size_of_game.add_max_fans * i.add_fans 
 				
-				current_game.min_earnings = current_game.min_earnings * 2
-				current_game.max_earnings = current_game.max_earnings * 2
+				current_game.min_earnings = current_game.min_earnings * i.add_money
+				current_game.max_earnings = current_game.max_earnings * i.add_money
 				
 			"negative":
 				current_game.max_development_progress = current_game.max_development_progress * i.game_production
@@ -77,8 +77,8 @@ func effects_running() -> void:
 				current_game.current_size_of_game.add_min_fans = current_game.current_size_of_game.add_min_fans / i.add_fans 
 				current_game.current_size_of_game.add_max_fans = current_game.current_size_of_game.add_max_fans / i.add_fans 
 				
-				current_game.min_earnings = current_game.min_earnings / 2
-				current_game.max_earnings = current_game.max_earnings / 2
+				current_game.min_earnings = current_game.min_earnings / i.add_money
+				current_game.max_earnings = current_game.max_earnings / i.add_money
 				
 				
 	effects = effects_survived
@@ -96,19 +96,19 @@ func _finished_game(game_info : Dictionary) -> void:
 			reviews.append({
 				positive_effect = {
 					effect_type = "positive",
-					duration = rng.randi_range(1000,100000), #in seconds
+					duration = rng.randi_range(120,1800), #in seconds
 					chance = positive_effect_chance,
-					add_money = rng.randf_range(1,5.0),
-					add_fans = rng.randf_range(1,5.0) ,
-					game_production = rng.randf_range(1,5.0)
+					add_money = rng.randf_range(1,2),
+					add_fans = rng.randf_range(1,2) ,
+					game_production = rng.randf_range(1,2)
 				},
 				negative_effect = {
 					effect_type = "negative",
-					duration = rng.randi_range(1000,100000), #in seconds
+					duration = rng.randi_range(120,1800), #in seconds
 					chance = 100 - positive_effect_chance,
-					add_money = rng.randf_range(1,5.0),
-					add_fans = rng.randf_range(1,5.0) ,
-					game_production = rng.randf_range(1,5.0)
+					add_money = rng.randf_range(1,2),
+					add_fans = rng.randf_range(1,2) ,
+					game_production = rng.randf_range(1,2)
 				}
 			})
 		

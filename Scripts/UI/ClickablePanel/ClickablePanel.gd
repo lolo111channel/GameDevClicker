@@ -1,6 +1,7 @@
 class_name ClickablePanel extends Panel
 
 @export var hint : String = "S"
+@export var can_click : bool = true
 var hint_ui : Hint
 var mouse_enter : bool  = false
 
@@ -18,7 +19,7 @@ func _process(delta) -> void:
 				mouse_enter = false
 	
 func _on_gui_input(event):
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenTouch and can_click:
 		if event.pressed:
 			_on_mouse_exited()
 			emit_signal("pressed")
